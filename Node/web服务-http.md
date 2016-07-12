@@ -13,6 +13,9 @@
         server..listen(3000);
 + http.ClientRequest
   + http.request(options,[callback])：创建ClientRequest对象
+  + on("data",callback)：以buffer的形式接受请求结果，请求结果可能会分段传输，多次调用该回调函数
+  + on("end",callback)：请求结果传输完成后，调用该回调
+  + write()：
 
         var postData = queryString.stringify({
             'type':'home_banner'

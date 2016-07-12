@@ -1,6 +1,8 @@
+##### request和response
 + nodejs的web服务-request
   + 使用http内置模块创建web服务
   + request对象和response对象挂载在处理函数中
+  + request对象包含所有的http请求信息
 
         var http = require("http");
 
@@ -46,7 +48,73 @@
         res.end("server is over",()=>{
             console.log("server is over");
         });
-        
 
-        
+##### url 
++ 解析url
+  + 加载url模块后，使用parse()解析url,返回一个解析对象
+
+            var url = require("url");
+            var result = url.parse("http://www.baidu.com/index.html?info=search");
+            //解析成
+            Url {
+                protocol: 'http:',
+                slashes: true,
+                auth: null,
+                host: 'www.baidu.com',
+                port: null,
+                hostname: 'www.baidu.com',
+                hash: null,
+                search: '?info=search',
+                query: 'info=search',
+                pathname: '/index.html',
+                path: '/index.html?info=search',
+                href: 'http://www.baidu.com/index.html?info=search' 
+            }
+  + 设置第二个参数为true，生成的query将不再是字符串，而是包含查询信息的对象
+
+            var result1 = url.parse("index.html?info=search",true);
+            //解析成
+            Url {
+                protocol: null,
+                slashes: null,
+                auth: null,
+                host: null,
+                port: null,
+                hostname: null,
+                hash: null,
+                search: '?info=search',
+                query: { info: 'search' },
+                pathname: 'index.html',
+                path: 'index.html?info=search',
+                href: 'index.html?info=search' 
+            }
++ 生成url
+  + 使用format()将一个url对象生成url字符串
+
+            var result2 = url.format({
+                protocol:"http",
+                hostname:"www.baidu.com",
+                pathname:"index.html",
+                search:"info=liuyucheng"
+            
+            })
+            //生成如下url
+            http://www.baidu.com/index.html?info=liuyucheng
++ 拼接url
+  + 使用resolve()拼接成url
+
+            var result3 = url.resolve("http://www.baidu.com/fo/fn","../../index.html");
+            //拼接成
+            http://www.baidu.com/index.html
+
+##### Query String
++ 将查询字符串转换成对象
+
+            var querys = require("querystring");
+            var result4 = querys.parse("first=jack&second=tom&second=jases&three");
+            { first: 'jack', second: [ 'tom', 'jases' ], three: '' }
++ 将对象转换成查询字符串
+
+            var result5 = querys.stringify({ first: 'jack', second: [ 'tom', 'jases' ], three: '' });
+            “first=jack&second=tom&second=jases&three=”  
         
