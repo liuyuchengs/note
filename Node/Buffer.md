@@ -50,3 +50,4 @@
   + isEncoding(encoding)：判断所使用的编码
 
         console.log(Buffer.isEncoding("utf8"));
++ 

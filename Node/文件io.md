@@ -1,29 +1,3 @@
-+ Stream
-  + nodejs的Stream是基于事件机制的
-  + WriteStream：将二进制数据写入文件
-
-        var fs = require("fs");
-        const ws = fs.createWriteStream("text.txt");
-
-        ws.write(new Buffer("hello world"),(err)=>{
-            if(err!==null){return err};
-            console.log("write success!");
-        })
-  + ReadStream：通过回调函数来接受读取的数据,数据均已二进制形式
-
-        var rs = fs.createReadStream("test.txt");
-        rs.on("data",function(chunk){
-            //读取的是二进制数据
-            console.log(chunk.toString());
-        })
-        rs.on("end",function(){
-            console.log(" read end");
-        })
-  + readStream和writeStream可组成一个数据管道，读取数据大于写入数据时，溢出的数据暂放在内存中
-
-        const fs = require("fs");
-        fs.createReadStream("text.txt").pipe(fs.createWriteStream("dest.txt"));
-
 + fs文件模块
   + readFile：读取文件，回调接受二进制数据
 
