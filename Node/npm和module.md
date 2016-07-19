@@ -1,17 +1,18 @@
 + 模块
-  + node.js的模块基于Commonjs规范
+  + node.js的模块基于Commonjs规范，module.exports = 对象导出模块
 
-  		// Tool.js
+		// Tool.js
 		function add(x,y){
-		return x+y;
+			return x+y;
 		}
 		module.exports = {
-		add:add
+			add:add
 		} 
-  + 导入模块
+  + require
 
-  		const tool = require("Tool");
+		const tool = require("Tool");
 		tool.add(2,3); //5
+  + 
 + 包
   + 包是非单一文件的模块，可将多个文件打包成一个模块，文件夹名称既是包的名称
   + package.json指定包的入口文件(第一优先级)

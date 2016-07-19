@@ -1,3 +1,40 @@
+##### Event
++ 触发事件
+  + emit(eventName,[args])：触发eventName事件
+
+        emitter.emit("valueChange");
++ 监听事件
+  + node.js中通过EventEmitter类来处理事件
+  + on(eventName,listener)：监听eventName事件，每次捕获后调用listener
+
+        emitter.on("on",()=>{
+            console.log("emitter is doing");
+        })
+
+        emitter.emit("on");
+  + once(eventName,listener)：监听eventName事件，只在第一次捕获后调用listener
+
+        emitter.once("on",()=>{
+            console.log("emitter is doing"); // 只执行一次
+        })
+
+        emitter.emit("on");
+        emitter.emit("on");
+  + prependListener(eventName,listener)：监听eventName事件，并将listener提交到队列首部
+
+        emitter.on("on",()=>{
+            console.log("listener A");
+        })
+        emitter.prependListener("on",()=>{
+            console.log("listener B"); //先执行
+        })
+
+        emitter.emit("on");
++ 取消监听
+  + removeListener(eventName,listener)：取消eventName事件的指定监听器
+  + removeAllListener(eventName)：取消eventName事件的所有监听器
+
+##### Error事件
 + 异常处理
   + try...catch只能捕获同步代码运行时产生的错误，不能捕获异步代码运行时产生的错误
  
