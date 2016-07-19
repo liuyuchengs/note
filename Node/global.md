@@ -6,9 +6,11 @@
 
         console.log(__filename);
   + global：node.js的全局作用域对象
-        
+
+        global.topValue = "global"; //全局作用域中添加topValue对象
+        console.log(topValue);
 + 见其他部分
   + console：见console.md
   + Immediate/Timeout等见Timeout
   + process：见process
-  + exports/requie/module：见module
+  + exports/requie/module：见npm和module

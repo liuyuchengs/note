@@ -32,7 +32,28 @@
         emitter.emit("on");
 + 取消监听
   + removeListener(eventName,listener)：取消eventName事件的指定监听器
+
+        function listener(){
+            console.log("listener A");
+        }
+        emitter.on("on",listener)
+        emitter.removeListener("on",listener);
+        emitter.emit("on");
   + removeAllListener(eventName)：取消eventName事件的所有监听器
+
+        emitter.on("on",listener)
+        emitter.removeAllListeners("on");
+        emitter.emit("on");
+ + newListener(eventName,listener)和removeListener(eventName,listener)事件：添加或者事件监听器时触发
+
+        emitter.on("newListener",(name,listener)=>{
+            console.log("event "+name+" is listen");
+        })
+        emitter.on("removeListener",(name,listener)=>{
+            console.log("event "+name+" is remove");
+        })
+        emitter.on("on",listener)
+        emitter.removeListener("on",listener);
 
 ##### Error事件
 + 异常处理
