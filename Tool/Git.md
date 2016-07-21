@@ -15,9 +15,21 @@
 
         $ git commit -m"add readme.md"
 + 撤销修改
-  + checkout -- <fileName>：撤销还未添加到暂存区的修改
+  + checkout -- <fileName>：撤销还未添加到暂存区的修改和删除,将文件保持与当前分支最新版本一致
 
         $ git checkout -- readme.md
-  + reset HEAD <fileName>：撤销添加到暂存区的修改，HEAD表示当前分支最新的版本(已经commit的)
+  + reset HEAD <fileName>：撤销添加到暂存区的修改(删除无法恢复)，HEAD表示当前分支最新的版本(已经commit的)
 
         $ git reset HEAD readme.md
++ 版本回退
+  + log：查看历史版本信息
+
+        $ git log
+  + reset --hard <version>：切换到指定版本
+
+        $ git reset --hard ff0b02e5056378c7ec2b2af89b643857d6ac8a13
+  + reset --hard HEAD^：跳转到上一个版本
+
+        $ git reset --hard HEAD^; //上一个版本
+        $ git reset --hard HEAD^^; //上两个版本
++ 
