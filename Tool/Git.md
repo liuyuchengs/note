@@ -41,3 +41,49 @@
   + clone ：克隆现有的远程仓库
 
   		$ git clone git@github.com:liuyuchengs/note.git
+	+ remote：查看现连接的远程仓库
+
+			$ git remote 
+	+ 将当前仓库提交到远程仓库
+
+			$ git push origin <branchName>
++ 分支
+  + 创建分支
+
+			$ git branch <branchName>
+  + 切换分支
+
+			$ git checkout <branchName>
+	+ 删除分支
+
+			$ git branch -d <branchName> //删除已经merge过后的分支，即已经完成该分支的任务
+			$ git branch -D <branchName> //强制删除还未merge过后的分支，即舍弃该分支
+  + 将当前指定分支合并到当前分支中
+
+			// 默认使用fast-forward方式(即将当前分支的指针向前移动到指定分支的最前面)
+			$ git merge <branchName>
+			// 通过commit的方式将分支合并
+			$ git merge -no-off -m"message" <branchName>
++ stash
+  + stash：将当前工作区内的文件改动保存起来(非添加到stage/index文件中)
+
+			$ git stash
+	+ stash list：列出stash记录
+
+			$ git stash list
+	+ stash apply <stashHead>：将stash内的文件恢复
+
+			$ git stash apply stash@{0}
+	+ stash drop <stashHead>： 删除stash记录
+
+			$ git stash drop stash@{0};
++ 标签
+  + tag <tagName> 在当前分支的HEAD上做一个特殊的标记，以便识别
+
+			$ git tag v1;
+	+ tag <tagName> commitid：在一个特定的commit上做一个特殊的标记
+
+			$ git tag v1.1 9265645
+	+ tag -d <tagName>：删除标签
+
+			$ git tag -d <tagName>
